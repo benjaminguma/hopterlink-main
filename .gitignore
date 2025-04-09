@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+/hopterlink-main/src/firebase.config.ts
 
 # testing
 /coverage
