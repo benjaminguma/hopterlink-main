@@ -1,10 +1,8 @@
 import request from "@/utils/http-request";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const uri = `/api/businesses/${parseInt(params.id)}/`;
   try {
     const result = await request.get(uri);
@@ -24,10 +22,8 @@ export async function GET(
   }
 }
 
-export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const uri = `/api/businesses/${parseInt(params.id)}/`;
   try {
     const data = await req.formData();

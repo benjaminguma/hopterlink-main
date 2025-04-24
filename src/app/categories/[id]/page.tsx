@@ -13,7 +13,7 @@ import { Separator } from "@/components/ui/separator";
 import Typography from "@/components/ui/typography";
 import { ChevronDown, Info } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, use } from "react";
 import { useCategories } from "@/contexts/ReUsableData";
 import { Subcategory } from "@/constants/constants";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -22,10 +22,11 @@ import { motion, useInView } from "framer-motion";
 import axios from "axios";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-const Page = ({ params }: Props) => {
+const Page = (props: Props) => {
+  const params = use(props.params);
   const { categories, loading: categoriesLoading } = useCategories();
   const [category, setCategory] = useState<any>(null);
   const [selectedSubcategory, setSelectedSubcategory] = useState<any>(null);

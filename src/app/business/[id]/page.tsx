@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Gallery from "@/components/Gallery";
 import Image from "next/image";
@@ -40,10 +40,11 @@ import { useRouter } from "next/navigation";
 import ReportBusiness from "@/components/ReportBusiness";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-const Business = ({ params }: Props) => {
+const Business = (props: Props) => {
+  const params = use(props.params);
   const router = useRouter();
   const [businessInfo, setBusinessInfo] = useState<any>({});
   const [reviews, setReviews] = useState<any>({});

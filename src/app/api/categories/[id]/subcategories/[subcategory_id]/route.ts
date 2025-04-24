@@ -3,8 +3,9 @@ import request from "@/utils/http-request";
 
 export async function GET(
   req: Request,
-  { params }: { params: { id: string; subcategory_id: string } }
+  props: { params: Promise<{ id: string; subcategory_id: string }> }
 ) {
+  const params = await props.params;
   const { id, subcategory_id } = params;
   const uri = `api/categories/${id}/subcategories/${subcategory_id}/businesses/`;
   const businesses = await request.get(uri);

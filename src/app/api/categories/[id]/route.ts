@@ -1,10 +1,8 @@
 import request from "@/utils/http-request";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const uri = `/api/categories/${parseInt(params.id)}`;
   try {
     const result = await request.get(uri);

@@ -3,9 +3,9 @@ import { useSession } from "next-auth/react";
 import { NextResponse } from "next/server";
 import request from "@/utils/http-request";
 
-export async function POST(req: Request, context: { params: { id: string } }) {
+export async function POST(req: Request, context: { params: Promise<{ id: string }> }) {
   const body = await req.json();
-  const { id } = context.params;
+  const { id } = (await context.params);
   const uri = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/businesses/${id}/reviews/`;
 
   try {
@@ -37,8 +37,8 @@ export async function POST(req: Request, context: { params: { id: string } }) {
   }
 }
 
-export async function GET(req: Request, context: { params: { id: string } }) {
-  const { id } = context.params;
+export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
+  const { id } = (await context.params);
   const uri = `${process.env.NEXT_PUBLIC_BACKEND_URL}api/businesses/${id}/reviews/`;
 
   try {
