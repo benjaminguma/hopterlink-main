@@ -140,7 +140,8 @@ export default function Home() {
     <HeaderContainer>
       <div className="relative w-full overflow-hidden">
         {/* Hero Section */}
-        <div className="flex flex-col min-h-screen relative mt-16">
+        {/* <div className="flex flex-col min-h-screen relative mt-16"> */}
+        <div className="flex flex-col relative mt-16">
           <div className="absolute inset-0">
             <StarsBackground />
             <ShootingStars />

@@ -81,34 +81,39 @@ export function Header({ className }: SidebarProps) {
   const getAuthButtons = () => (
     <div className="flex gap-3 items-center justify-between">
       <>
-        {status === "authenticated" && !userLoading && !userInfo?.is_business && (
-          <Button
-            variant={"default"}
-            className="text-white bg-[#c55e0c]"
-            onClick={() => router.replace("/add-a-business")}
-          >
-            Add a Business
-          </Button>
-        )}
+        {status === "authenticated" &&
+          !userLoading &&
+          !userInfo?.is_business && (
+            <Button
+              variant={"default"}
+              className="text-white bg-[#c55e0c]"
+              onClick={() => router.replace("/add-a-business")}
+            >
+              Add a Business
+            </Button>
+          )}
       </>
       <DropdownMenu>
         <DropdownMenuTrigger>
           <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger>
+              <TooltipTrigger asChild>
                 <Button
+                  asChild
                   className="rounded-full relative bg-transparent group hover:bg-none"
                   variant={"outline"}
                 >
-                  <SunIcon
-                    className="h-[1.4rem] w-[1.4rem] rotate-0 scale-100 transition-all 
-        group-hover:-rotate-90 dark:scale-0 group-hover:text-primary hover:scale-110"
-                  />
-                  <MoonIcon
-                    className="absolute h-[1.4rem] w-[1.4rem] rotate-0 scale-0 transition-all 
-        group-hover:rotate-90 dark:scale-100 group-hover:text-primary text-white hover:scale-110"
-                  />
-                  <span className="sr-only">Toggle theme</span>
+                  <div>
+                    <SunIcon
+                      className="h-[1.4rem] w-[1.4rem] rotate-0 scale-100 transition-all 
+                    group-hover:-rotate-90 dark:scale-0 group-hover:text-primary hover:scale-110"
+                    />
+                    <MoonIcon
+                      className="absolute h-[1.4rem] w-[1.4rem] rotate-0 scale-0 transition-all 
+                    group-hover:rotate-90 dark:scale-100 group-hover:text-primary text-white hover:scale-110"
+                    />
+                    <span className="sr-only">Toggle theme</span>
+                  </div>
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
@@ -136,8 +141,9 @@ export function Header({ className }: SidebarProps) {
             <DropdownMenuTrigger>
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger asChild>
                     <Button
+                      asChild
                       className=" relative rounded-full  bg-transparent group hover:bg-none" // Added 'group' class here
                       variant={"outline"}
                     >
@@ -175,18 +181,19 @@ export function Header({ className }: SidebarProps) {
       )}
       {status === "unauthenticated" && (
         <>
-          <Link href="/login" target="_blank">
-            <Button size="tiny" variant="link">
-              Sign in{" "}
+          <Link href="/login" passHref>
+            <Button asChild size="tiny" variant="link">
+              <span className="flex items-center gap-2">Sign in</span>
             </Button>
           </Link>
-          <Link href="/signup" target="_blank">
-            <Button size="tiny" variant="outline">
-              Sign Up
+          <Link href="/signup" passHref>
+            <Button size="tiny" variant="outline" asChild>
+              <span className="flex items-center gap-2">Sign Up</span>
             </Button>
           </Link>
         </>
-      )}{" "}
+      )}
+
       {status === "authenticated" && (
         <DropdownMenu>
           <DropdownMenuTrigger>

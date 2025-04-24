@@ -37,7 +37,7 @@ const DetailCard = ({
   return (
     <>
       <div
-        className="h-fit w-[80] max-md:w-full my-8 rounded-md hover:shadow-md flex flex-row max-md:flex-col items-start max-md:items-center
+        className="rounded-md hover:shadow-md flex flex-row max-md:flex-col items-start max-md:items-center
           bg-transparent hover:border-secondary border-[1px]
           border-transparent hover:transition hover:ease-in-out
           ease-in-out p-4"

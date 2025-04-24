@@ -88,11 +88,11 @@ const CategoryCards = () => {
                       className="p-3 rounded-full bg-white/10 backdrop-blur-sm 
                                transition-colors duration-300 group-hover:text-white"
                     >
-                      <Icon 
+                      {/* <Icon 
                         name={category.icon as string} 
                         size={26}
                         className="transition-transform duration-300 group-hover:scale-110"
-                      />
+                      /> */}
                     </motion.div>
                     
                     <div className="text-center transition-colors duration-300 group-hover:text-white">
